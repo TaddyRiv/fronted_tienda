@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useCarrito } from "../../context/CarritoContext";
 import sinImagen from "../../assets/sin-imagen.png";
+import ReconocimientoVoz from "../../components/ReconocimientoVoz"; // ✅ nuevo componente
 
 const CatalogoCliente = () => {
   const [productos, setProductos] = useState([]);
   const { añadirProducto } = useCarrito();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/products")
+    fetch("http://localhost:5000/api/products")
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error al cargar productos", err));
@@ -16,6 +17,10 @@ const CatalogoCliente = () => {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-red-600 mb-6">Catálogo</h1>
+
+      {/* ✅ Botón de reconocimiento de voz */}
+      <ReconocimientoVoz productos={productos} />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {productos.map((producto) => (
           <div key={producto.id} className="bg-white shadow rounded p-4">
