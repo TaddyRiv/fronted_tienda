@@ -17,7 +17,8 @@ import NotasVenta from "./pages/admin/NotasVenta";
 import OrdenesInternas from "./pages/admin/OrdenesInternas";
 import OrderDetails from "./pages/admin/OrderDetails";
 import PagoExitoso from "./pages/cliente/PagoExitoso";
-import CrearOrden from "./pages/admin/CrearOrden";
+import CrearOrdenInterna from "./pages/admin/CrearOrdenInterna";
+
 
 // Cargar Stripe Promise
 const stripePromise = loadStripe("pk_test_51RHROzCrWG5rpklusUtAkQPaRU7wMVNVUIZ7baeX0czL8wBJHE59F1Qlw5WwzYSMzZn3a2VtpH6ys8mORxxnwuIT00VSqJYP4M");
@@ -43,7 +44,8 @@ function App() {
           <Route path="/admin/notas-venta" element={<PrivateRoute><NotasVenta /></PrivateRoute>} />
           <Route path="/admin/ordenes" element={<PrivateRoute><OrdenesInternas /></PrivateRoute>} />
           <Route path="/admin/detalles" element={<PrivateRoute><OrderDetails /></PrivateRoute>} />
-          <Route path="/admin/crear-orden" element={<PrivateRoute><CrearOrden /></PrivateRoute>} /> {/* ✅ Agregado */}
+          <Route path="/admin/crear-orden" element={<CrearOrdenInterna />} /> {/* 👈 Añadir esta */}
+        
 
           {/* Rutas de cliente */}
           <Route path="/cliente/catalogo" element={<PrivateRoute><CatalogoCliente /></PrivateRoute>} />
