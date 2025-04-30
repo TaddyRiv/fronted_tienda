@@ -6,7 +6,7 @@ const Categorias = () => {
 
   const fetchCategorias = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/categories");
+      const res = await fetch("http://54.235.59.253/api/categories");
       const data = await res.json();
       setCategorias(data);
     } catch (err) {
@@ -19,7 +19,7 @@ const Categorias = () => {
     if (!form.nombre.trim()) return alert("El nombre es obligatorio");
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/categories", {
+      const res = await fetch("http://54.235.59.253/api/categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const FinalizarCompra = () => {
 
   const verificarStockYFinalizarCompra = async () => {
     for (const item of carrito) {
-      const res = await fetch(`http://127.0.0.1:5000/api/products/${item.id}/check-stock`);
+      const res = await fetch(`http://54.235.59.253/api/products/${item.id}/check-stock`);
       const data = await res.json();
       if (data.stock_disponible < item.cantidad) {
         setMensajeError(`No hay suficiente stock para el producto: ${item.name}`);
@@ -29,7 +29,7 @@ const FinalizarCompra = () => {
     }
 
     try {
-      const orderRes = await fetch("http://127.0.0.1:5000/api/orders", {
+      const orderRes = await fetch("http://54.235.59.253/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ estado: "pendiente", monto: total, sucursal_id: sucursalId }),
@@ -38,7 +38,7 @@ const FinalizarCompra = () => {
       const orderId = orderData.id;
 
       for (const item of carrito) {
-        await fetch("http://127.0.0.1:5000/api/order-details", {
+        await fetch("http://54.235.59.253/api/order-details", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -55,7 +55,7 @@ const FinalizarCompra = () => {
           ? `${ubicacion.nombre} - ${ubicacion.calle} - ${ubicacion.zona || "sin referencia"}`
           : null;
 
-      const ventaRes = await fetch("http://127.0.0.1:5000/api/sales-orders", {
+      const ventaRes = await fetch("http://54.235.59.253/api/sales-orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -76,14 +76,14 @@ const FinalizarCompra = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/sales-orders/${ventaId}/add-payment`, {
+      await fetch(`http://54.235.59.253/api/sales-orders/${ventaId}/add-payment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ payment_id: metodoPagoId }),
       });
 
       for (const item of carrito) {
-        await fetch(`http://127.0.0.1:5000/api/products/${item.id}/update-stock`, {
+        await fetch(`http://54.235.59.253/api/products/${item.id}/update-stock`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ cantidad: item.cantidad }),

@@ -7,7 +7,7 @@ const OrdenesInternas = () => {
   // Obtener todas las órdenes
   const fetchOrdenes = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/sales-orders");
+      const res = await fetch("http://54.235.59.253/api/sales-orders");
       const data = await res.json();
       setOrdenes(data);
     } catch (err) {
@@ -18,7 +18,7 @@ const OrdenesInternas = () => {
   // Función para actualizar el estado de la orden
   const actualizarEstado = async (id) => {
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/sales-orders/${id}`, {
+      const res = await fetch(`http://54.235.59.253/api/sales-orders/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

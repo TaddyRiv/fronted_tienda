@@ -7,7 +7,7 @@ const EstadoPedido = ({ orderId }) => {
   useEffect(() => {
     const fetchPedido = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/sales-orders/${orderId}`);
+        const response = await fetch(`http://54.235.59.253/api/sales-orders/${orderId}`);
         const data = await response.json();
         setPedido(data);
       } catch (error) {

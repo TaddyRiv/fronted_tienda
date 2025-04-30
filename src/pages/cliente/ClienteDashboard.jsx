@@ -14,7 +14,7 @@ const ClienteDashboard = () => {
   // Obtener productos
   useEffect(() => {
     const fetchProductos = async () => {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch("http://54.235.59.253/api/products");
       const data = await res.json();
       setProductos(data);
     };
@@ -28,7 +28,7 @@ const ClienteDashboard = () => {
       const userId = user?.id;
       if (!userId) return;
 
-      const res = await fetch(`http://localhost:5000/api/sales-orders?user_id=${userId}`);
+      const res = await fetch(`http://54.235.59.253/api/sales-orders?user_id=${userId}`);
       const data = await res.json();
       setMisPedidos(data);
 

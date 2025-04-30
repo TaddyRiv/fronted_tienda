@@ -12,12 +12,12 @@ const CrearOrdenInterna = () => {
   const [sucursalId, setSucursalId] = useState(1); // Fijo o puedes hacerlo dinámico
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/products")
+    fetch("http://54.235.59.253/api/products")
       .then(res => res.json())
       .then(data => setProductos(data))
       .catch(err => console.error("Error al cargar productos:", err));
 
-    fetch("http://127.0.0.1:5000/api/users")
+    fetch("http://54.235.59.253/api/users")
       .then(res => res.json())
       .then(data => setUsuarios(data))
       .catch(err => console.error("Error al cargar usuarios:", err));
@@ -56,7 +56,7 @@ const CrearOrdenInterna = () => {
     try {
       // 1. Verificar stock antes
       for (const item of carrito) {
-        const res = await fetch(`http://127.0.0.1:5000/api/products/${item.id}/check-stock`);
+        const res = await fetch(`http://54.235.59.253/api/products/${item.id}/check-stock`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -70,7 +70,7 @@ const CrearOrdenInterna = () => {
       }
 
       // 2. Crear orden general
-      const ordenRes = await fetch("http://127.0.0.1:5000/api/orders", {
+      const ordenRes = await fetch("http://54.235.59.253/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -85,7 +85,7 @@ const CrearOrdenInterna = () => {
 
       // 3. Agregar detalles y descontar stock
       for (const item of carrito) {
-        await fetch("http://127.0.0.1:5000/api/order-details", {
+        await fetch("http://54.235.59.253/api/order-details", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -96,7 +96,7 @@ const CrearOrdenInterna = () => {
           }),
         });
 
-        await fetch(`http://127.0.0.1:5000/api/products/${item.id}/update-stock`, {
+        await fetch(`http://54.235.59.253/api/products/${item.id}/update-stock`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ cantidad: item.cantidad }),
@@ -104,7 +104,7 @@ const CrearOrdenInterna = () => {
       }
 
       // 4. Crear nota de venta
-      await fetch("http://127.0.0.1:5000/api/sales-orders", {
+      await fetch("http://54.235.59.253/api/sales-orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

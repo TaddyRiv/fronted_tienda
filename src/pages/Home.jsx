@@ -7,7 +7,7 @@ const Home = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/products")
+    fetch("http://54.235.59.253/api/products")
       .then((res) => res.json())
       .then(setProductos);
   }, []);

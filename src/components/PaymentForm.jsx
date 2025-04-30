@@ -10,7 +10,7 @@ const PaymentForm = ({ amount, onPagoExitoso }) => {
   useEffect(() => {
     const crearIntentoPago = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:5000/api/create-payment-intent', {
+        const res = await fetch('http://54.235.59.253/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ amount: amount * 100 }), // Stripe espera en centavos

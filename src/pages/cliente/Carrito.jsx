@@ -19,7 +19,7 @@ const Carrito = () => {
     }
 
     const ultimo = carrito[carrito.length - 1];
-    fetch("http://localhost:5000/api/recomendar-productos", {
+    fetch("http://54.235.59.253/api/recomendar-productos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ producto_id: ultimo.id }),

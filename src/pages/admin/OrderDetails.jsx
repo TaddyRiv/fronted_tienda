@@ -5,7 +5,7 @@ const OrderDetails = () => {
 
   const fetchDetalles = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/order-details");
+      const res = await fetch("http://54.235.59.253/api/order-details");
       const data = await res.json();
       setDetalles(data);
     } catch (err) {

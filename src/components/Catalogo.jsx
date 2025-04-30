@@ -7,7 +7,7 @@ const Catalogo = () => {
   const { añadirProducto } = useCarrito();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/products")
+    fetch("http://54.235.59.253/api/products")
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error al cargar productos", err));

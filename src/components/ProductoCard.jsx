@@ -11,7 +11,7 @@ const ProductoCard = ({ producto }) => {
   const agregarAlCarrito = async () => {
     // Verificar stock antes de agregar al carrito
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/products/${producto.id}/check-stock`);
+      const res = await fetch(`http://54.235.59.253/api/products/${producto.id}/check-stock`);
       const data = await res.json();
   
       if (res.ok) {

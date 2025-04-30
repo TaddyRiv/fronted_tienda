@@ -33,7 +33,7 @@ const Usuarios = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://127.0.0.1:5000/api/users/${id}`, {
+      const res = await fetch(`http://54.235.59.253/api/users/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const Usuarios = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://127.0.0.1:5000/api/users", {
+      const res = await fetch("http://54.235.59.253/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Usuarios = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://127.0.0.1:5000/api/users/${usuarioEditando.id}`, {
+      const res = await fetch(`http://54.235.59.253/api/users/${usuarioEditando.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
